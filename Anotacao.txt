@@ -1,0 +1,6 @@
+ Comando Skipe é usado para impedir que um determinado teste seja executado
+ ele pode ser usado tanto em um teste expecifico quanto em um grupo de testes.
+
+O comando Only, permite que seja executado um teste especifico dentro de um grupo de testes.
+
+Grupos são agrupamentos de testes onde, podendo conter outros grupos em seu interior, não existindo uma limitação na quantidade de grupos.
