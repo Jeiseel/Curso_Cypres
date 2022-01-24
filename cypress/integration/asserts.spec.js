@@ -67,3 +67,13 @@ it('Tipos', () => {
     expect({}).to.be.an('object')
     expect([]).to.be.an('array')
 })
+
+it('String', () => {
+    const str = 'Texto tipo string'
+
+    expect(str).to.be.equals('Texto tipo string')
+    expect(str).to.have.length(17)
+    expect(str).to.contains('ti')
+    expect(str).to.match(/tipo/)
+    
+})
