@@ -1,5 +1,7 @@
 /// <Reference types="cypress" />
 
+// Acertivas
+
 // checagem de igualdade de variaveis simples;
 
 it('Igualdade', () => {
@@ -75,5 +77,13 @@ it('String', () => {
     expect(str).to.have.length(17)
     expect(str).to.contains('ti')
     expect(str).to.match(/tipo/)
-    
+})
+
+it('Numeros', () => {
+    const number = 4
+    const floatnumber = 5.1234
+
+    expect(number).to.be.equal(4)
+    expect(number).to.be.above(3)
+    expect(number).to.be.below(7)
 })
