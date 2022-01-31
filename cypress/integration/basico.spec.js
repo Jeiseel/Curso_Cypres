@@ -8,4 +8,10 @@ describe('Cypress Basic', () => {
             .should('be.equal', 'Campo de Treinamento')
             .and('contain', 'Campo')
     })
+
+    it('Intereção com os elementos', () => {
+        cy.visit('https://www.wcaquino.me/cypress/componentes.html')
+
+        cy.get('#buttonSimple').click()
+    })
 })
