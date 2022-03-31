@@ -27,7 +27,7 @@ describe('Elementos basicos', () => {
 
     })
 
-    it.only('TextFields', () => { //escrevendo nos campos de texto
+    it('TextFields', () => { //escrevendo nos campos de texto
         cy.get('#formNome').type('Teste automatizado com cypress')
         cy.get('#formNome').should('have.value', 'Teste automatizado com cypress')
 
@@ -49,5 +49,17 @@ describe('Elementos basicos', () => {
         
 
     })
+
+    it('RadioButton', () => { 
+        cy.get('#formSexoFem')
+            .click()
+            .should('be.checked') // acertiva para verificar se o botão foi selecionado
+        
+        cy.get('#formSexoMasc').should('not.be.checked')//acertiva que verifica se o botao não está selecionado
+
+        cy.get("[name='formSexo']").should('have.length', 2) //acertiva para verificar se existe dois radiobutton
+    })
+
+
 
 })
