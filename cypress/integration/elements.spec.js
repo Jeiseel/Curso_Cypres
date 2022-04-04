@@ -53,11 +53,22 @@ describe('Elementos basicos', () => {
     it('RadioButton', () => { 
         cy.get('#formSexoFem')
             .click()
-            .should('be.checked') // acertiva para verificar se o botão foi selecionado
+            .should('be.checked')//acertiva para verificar se o botão foi selecionado
         
         cy.get('#formSexoMasc').should('not.be.checked')//acertiva que verifica se o botao não está selecionado
 
-        cy.get("[name='formSexo']").should('have.length', 2) //acertiva para verificar se existe dois radiobutton
+        cy.get("[name='formSexo']").should('have.length', 2)//acertiva para verificar se existe dois radiobutton
+    })
+
+    it.only('Chackbox', () => {
+        cy.get('#formComidaPizza')
+            .click()//para clickar em um unico elemento do chackbox
+            .should('be.checked')// verifica se a opção foi selecionada
+        
+        cy.get('[name=formComidaFavorita]')
+            .click({multiple: true})//para selecionar multiplos elementos do chackbox passar marametro multiple
+            .n
+
     })
 
 
