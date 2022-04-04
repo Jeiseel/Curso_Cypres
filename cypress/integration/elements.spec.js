@@ -60,7 +60,7 @@ describe('Elementos basicos', () => {
         cy.get("[name='formSexo']").should('have.length', 2)//acertiva para verificar se existe dois radiobutton
     })
 
-    it.only('Chackbox', () => {
+    it('Chackbox', () => {
         cy.get('#formComidaPizza')
             .click()//para clickar em um unico elemento do chackbox
             .should('be.checked')// verifica se a opção foi selecionada
@@ -69,6 +69,12 @@ describe('Elementos basicos', () => {
             .click({multiple: true})//para selecionar multiplos elementos do chackbox passar marametro multiple
             .n
 
+    })
+
+    it.only('ComboBox', () => {
+        cy.get('[data-test=dataEscolaridade]')
+            .select('2o grau completo')//Seleciona um valor dentro do ComboBox
+            .should('have.value','2graucomp')
     })
 
 
