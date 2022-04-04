@@ -18,4 +18,13 @@ describe('Sincronas...', ()=>{
         cy.get('#novoCampo').should('exist')// acertiva para o campo existente
         cy.get('#novoCampo').type('Se Chegou Aqui Tá Bom!')//Escreve no campo que agora existe
     })
+
+    it.only('Retrys', () => {
+        cy.get('#novoCampo').should('not.exist')
+        cy.get('#buttonDelay').click()
+        cy.get('#novoCampo').should('not.exist')
+        cy.get('#novoCampo')
+            .should('exist')
+            .type('Retrys')
+    })
 })
