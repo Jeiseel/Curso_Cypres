@@ -71,11 +71,17 @@ describe('Elementos basicos', () => {
 
     })
 
-    it.only('ComboBox', () => {
+    it('ComboBox', () => {
         cy.get('[data-test=dataEscolaridade]')
             .select('2o grau completo')//Seleciona um valor dentro do ComboBox
             .should('have.value','2graucomp')
     })
+
+    it.only('ComboBox Multiplo', () => {
+        cy.get('[data-testid=dataEsportes]')
+            .select(['natacao','Karate','nada'])//para combo multiplos é necessario mandar o valor da variavel value 
+    })
+    
 
 
 
