@@ -19,7 +19,7 @@ describe('Sincronas...', ()=>{
         cy.get('#novoCampo').type('Se Chegou Aqui Tá Bom!')//Escreve no campo que agora existe
     })
 
-    it.only('Retrys', () => {
+    it('Retrys', () => {
         cy.get('#novoCampo').should('not.exist')
         cy.get('#buttonDelay').click()
         cy.get('#novoCampo').should('not.exist')
@@ -27,4 +27,15 @@ describe('Sincronas...', ()=>{
             .should('exist')
             .type('Retrys')
     })
+
+    it.only('Usando o Find', () => {
+        cy.get('#buttonList').click()
+        cy.get('#Lista Li')
+            .find('span')
+            .should('contain', 'Item 1')
+        cy.get('#Lista Li span')
+            .should('contain', 'Item 2')
+
+    })
+
 })
