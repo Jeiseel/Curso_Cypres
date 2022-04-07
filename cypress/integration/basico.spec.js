@@ -10,7 +10,7 @@ describe('Cypress Basic', () => {
         cy.title().should('be.equal', 'Campo de Treinamento')
         cy.title().should('contain', 'Campo')//.debug() pegar informações da pagina com detalhes.
 
-        cy.title().then(title => {
+        cy.title().then(title => {//then é usado quando o variavel está dentro de uma promise
             console.log(title)
         })
     })

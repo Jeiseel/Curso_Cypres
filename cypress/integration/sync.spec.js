@@ -49,9 +49,15 @@ describe('Sincronas...', () => {
             .should('have.length', 2)
     })
 
-    it.only('Click retry', () => {
+    it('Click retry', () => {
         cy.get('#buttonCount').click()
             .should('have.value', '11')
 
+    })
+    it.only('shold Vs Then', () => {
+        cy.get('#buttonListDOM').should($el =>{
+            expect($el).to.have.length(1)
+            return 2
+        }).and('have.id', 'buttonListDOM')
     })
 })
