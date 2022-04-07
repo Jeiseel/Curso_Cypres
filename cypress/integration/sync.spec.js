@@ -38,7 +38,7 @@ describe('Sincronas...', () => {
 
     })
 
-    it.only('Timeout', () => {
+    it('Timeout', () => {
         //cy.get('#buttonListDOM').click('')
        //cy.wait(5000)//pausa a execução do script pelo tempo informado no escopo do metodo, nesse caso 5 segundos. Só usar em casos extremos
         //cy.get('#Lista Li span', {timeout:30000})
@@ -47,5 +47,11 @@ describe('Sincronas...', () => {
         cy.get('#buttonListDOM').click('')
         cy.get('#Lista Li span', {timeout:30000})
             .should('have.length', 2)
+    })
+
+    it.only('Click retry', () => {
+        cy.get('#buttonCount').click()
+            .should('have.value', '11')
+
     })
 })
