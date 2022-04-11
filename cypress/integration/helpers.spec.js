@@ -26,4 +26,18 @@ describe('Helpers', () => {
 
 
     })
+
+    it.only('Its', () => {// tras a propiedade dos objetos que estão em meio a cadeia do cypress
+        const obj = {nome: 'Teste', idade: 40}
+        cy.wrap(obj).should('have.property', 'nome', 'Teste' )// Pega o obj completo e apenas a propiedade nome e faz a comparação
+        cy.wrap(obj).its('nome').should('be.equal', 'Teste')
+
+        const obj2 = {nome: 'User', idade: 30, endereco: {rua: 'Capitão de areia'}}
+        cy.wrap(obj2).its('endereco').should('have.property', 'rua')// Dentro de endereco verifica se existe a propiedade rua
+        cy.wrap(obj2).its('endereco').its('rua').should('contain', 'areia')// Encadeando os Its sendo endereco ainda um objeto
+        cy.wrap(obj2).its('endereco.rua').should('contain', 'Capitão')// Melhor forma de se fazer quando se usa o should evitando rety no ultimo comando
+
+        cy.visit('https://www.wcaquino.me/cypress/componentes.html')
+        cy.title().its('length').should('be.equal', 20)// Verifica se o titulo tem o tamanho de 20 caracteres
+    })
 })
