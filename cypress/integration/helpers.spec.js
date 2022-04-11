@@ -27,7 +27,7 @@ describe('Helpers', () => {
 
     })
 
-    it.only('Its', () => {// tras a propiedade dos objetos que estão em meio a cadeia do cypress
+    it('Its', () => {// tras a propiedade dos objetos que estão em meio a cadeia do cypress
         const obj = {nome: 'Teste', idade: 40}
         cy.wrap(obj).should('have.property', 'nome', 'Teste' )// Pega o obj completo e apenas a propiedade nome e faz a comparação
         cy.wrap(obj).its('nome').should('be.equal', 'Teste')
@@ -39,5 +39,19 @@ describe('Helpers', () => {
 
         cy.visit('https://www.wcaquino.me/cypress/componentes.html')
         cy.title().its('length').should('be.equal', 20)// Verifica se o titulo tem o tamanho de 20 caracteres
+    })
+
+    it.only('Invoke', () =>{
+        const getValue = () => 1;
+        const soma = (a,b) => a + b;
+        
+        cy.wrap({fn: getValue}).invoke('fn').should('be.equal', 1)
+        cy.wrap({fn: soma}).invoke('fn', 2,5).should('be.equal', 7)
+
+        cy.visit('https://www.wcaquino.me/cypress/componentes.html')
+        cy.get('#formNome').invoke('val', 'Enviando texto via Invoke')
+        cy.window().invoke('alert', 'Exibindo aqui!')
+        cy.get('#resultado')
+            .invoke('html', '<input type="button" value="Hakudão!"/>')
     })
 })
