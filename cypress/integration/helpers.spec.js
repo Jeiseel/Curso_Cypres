@@ -1,7 +1,7 @@
 /// <Reference types="cypress" />
 
-//Trabalhando com primises com Wrap
-//Deixar as primises serem gerenciada pelo Cypress usando then ou should
+//Trabalhando com promises com Wrap
+//Deixar as promises serem gerenciada pelo Cypress usando then ou should
 
 describe('Helpers', () => {
 
