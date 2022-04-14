@@ -12,7 +12,22 @@ describe('Cypress Basic', () => {
 
         cy.title().then(title => {//then é usado quando o variavel está dentro de uma promise
             console.log(title)
+
+            cy.get('#formNome').type(title)
+
+            cy.get('[data-cy=dataSobrenome]').then($el => {
+                $el.val(title)
+            })
+
+
+            cy.get('#elementosForm\\:sugestoes').then($el => {
+                cy.wrap($el).type(title)
+            })
         })
+
+        
+        
+        
     })
 
     it('Intereção com os elementos', () => {
