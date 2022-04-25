@@ -18,4 +18,14 @@ describe('Trabalhando com Alerts', () => {
 
         })
     })
+
+
+    it.only('Alert usando mock', () => {
+        const stub = cy.stub().as('Alerta')//Dando nome objeto (Alias)
+        cy.on('window:alert', stub)
+        cy.get('#alert').click().then(() => {
+            expect(stub.getCall([0])).to.be.calledWith('Alert Simples')
+        })
+
+    })
 })
