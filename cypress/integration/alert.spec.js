@@ -63,7 +63,7 @@ describe('Trabalhando com Alerts', () => {
         cy.get('#prompt').click()
     })
 
-    it.only('Validando Mensagens', () => {
+    it('Validando Mensagens', () => {
         const stub = cy.stub().as('alerta')
         cy.on('window:alert', stub)
         cy.get('#formCadastrar').click()
@@ -84,4 +84,5 @@ describe('Trabalhando com Alerts', () => {
         cy.get('#resultado > :nth-child(1)').should('contain', 'Cadastrado!')
 
     })
+
 })
