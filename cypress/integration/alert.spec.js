@@ -29,7 +29,7 @@ describe('Trabalhando com Alerts', () => {
 
     })
 
-    it.only('Confirm', () => {
+    it('Confirm', () => {
         cy.get('#confirm').click()
         cy.on('window:confirm', msg => {
             expect(msg).to.be.equal('Confirm Simples')
@@ -39,7 +39,7 @@ describe('Trabalhando com Alerts', () => {
         })
     })
 
-    it.only('Deny', () => {
+    it('Deny', () => {
         cy.get('#confirm').click()
         cy.on('window:confirm', msg => {
             expect(msg).to.be.equal('Confirm Simples')
@@ -48,5 +48,18 @@ describe('Trabalhando com Alerts', () => {
         cy.on('window:alert', msg =>{
             expect(msg).to.be.equal('Negado')
         })
+    })
+
+    it.only('Prompt', () => {
+        cy.window().then(win => {//o metodo window retorna o objeto ques esta gerenciando toda a pagina
+            cy.stub(win, 'prompt').returns('42')
+        }) 
+        cy.on('window:confirm', msg => {
+            expect(msg).to.be.equal('Era 42?')
+        })
+        cy.on('window:alert', msg => {
+            expect(msg).to.be.equal(':D')
+        })
+        cy.get('#prompt').click()
     })
 })
