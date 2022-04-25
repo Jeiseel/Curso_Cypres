@@ -20,12 +20,33 @@ describe('Trabalhando com Alerts', () => {
     })
 
 
-    it.only('Alert usando mock', () => {
+    it('Alert usando mock', () => {
         const stub = cy.stub().as('Alerta')//Dando nome objeto (Alias)
         cy.on('window:alert', stub)
-        cy.get('#alert').click().then(() => {
+        cy.get('#alert').click().then(() => {//Fazendo acertiva usando Then.
             expect(stub.getCall([0])).to.be.calledWith('Alert Simples')
         })
 
+    })
+
+    it.only('Confirm', () => {
+        cy.get('#confirm').click()
+        cy.on('window:confirm', msg => {
+            expect(msg).to.be.equal('Confirm Simples')
+        })
+        cy.on('window:alert', msg =>{
+            expect(msg).to.be.equal('Confirmado')
+        })
+    })
+
+    it.only('Deny', () => {
+        cy.get('#confirm').click()
+        cy.on('window:confirm', msg => {
+            expect(msg).to.be.equal('Confirm Simples')
+            return false;
+        })
+        cy.on('window:alert', msg =>{
+            expect(msg).to.be.equal('Negado')
+        })
     })
 })
