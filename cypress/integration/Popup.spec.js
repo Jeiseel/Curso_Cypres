@@ -1,5 +1,6 @@
 /// <Reference types="cypress" />
 
+//O Cypress mão consegue trabalhar diretamente com Popup's porém existem outros meios de se fazer.
 describe('Trabalhando com Popup', () => {
 
     it('Testando Popup diretamente', () => {
