@@ -44,7 +44,7 @@ describe('Trabalhando com Popup', () => {
 
         it('Forcando abertura de link em uma pagina', () => {
             cy.contains('Popup2')
-                .invoke('removeAttr', 'target')
+                .invoke('removeAttr', 'target')//removendo o atributo target fazendo o link abrir no contexto principal
                 .click()
             cy.get('#tfield').type('To aqui de novo!')
         })
