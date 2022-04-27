@@ -13,13 +13,42 @@ describe('Trabalhando com Popup', () => {
 
     })
 
-    it.only('Verifica se o Popup foi invocado', () => {
+    it('Verifica se o Popup foi invocado', () => {
         cy.visit('https://www.wcaquino.me/cypress/componentes.html')
         cy.window().then(win =>{
             cy.stub(win, 'open').as('winOpen')
         })
         cy.get('#buttonPopUp').click()
         cy.get('@winOpen').should('be.called')
+    })
+
+    //Validar se o link está apontando para o canto correto
+    describe.only('Trabalhando com links de Popup',() => {
+        beforeEach(() => {
+            cy.visit('https://www.wcaquino.me/cypress/componentes.html')
+
+        })
+
+        it('Checando Popup url', () => {
+            cy.contains('Popup2').should('have.prop', 'href')//have.prop retona a propiedade
+                .and('equal', 'https://www.wcaquino.me/cypress/frame.html')
+        })
+
+        it('Acessando Popup dinamicos', () => {//verifica popup de forma dinamica
+            cy.contains('Popup2').then($a => {
+                const href = $a.prop('href')
+                cy.visit(href)
+                cy.get('#tfield').type('Se Chegou aqui tá OK!')
+            })
+        })
+
+        it('Forcando abertura de link em uma pagina', () => {
+            cy.contains('Popup2')
+                .invoke('removeAttr', 'target')
+                .click()
+            cy.get('#tfield').type('To aqui de novo!')
+        })
+
     })
 
 })
