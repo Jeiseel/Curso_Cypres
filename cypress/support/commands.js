@@ -23,3 +23,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+//Os metodos no arquivo commands já são importados automaticamente
+Cypress.Commands.add('clickAlert', (locator, massage) => {
+    cy.get(locator).click()
+    cy.on('window:alert', msg => {
+        expect(massage).to.be.equal('Alert Simples')
+    })
+})
