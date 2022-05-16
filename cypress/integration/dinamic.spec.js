@@ -1,7 +1,7 @@
 /// <Reference types="cypress" />
 
 describe('Testes dinamicos', () => {
-    beforeEach(() => { 
+    before(() => { 
         cy.visit('https://www.wcaquino.me/cypress/componentes.html')
     })
 
@@ -20,5 +20,19 @@ describe('Testes dinamicos', () => {
     
         })
     })
+
+        it.only('Deve selecionar todos usando o each', () => {
+            cy.get('#formNome').type('Jeiseel')
+            cy.get('#formSobrenome').type('Rodrigues')
+            cy.get(`[name=formSexo][value=M]`).click()
+            cy.get('[name=formComidaFavorita').each($el => {//metodo each permite ser seletivo nas opções
+                if($el.val() != 'vegetariano')
+                    cy.wrap($el).click
+            })
+            cy.get('#formEscolaridade').select('Superior')
+            cy.get('#formEsportes').select('Karate')
+            cy.get('#formCadastrar').click()
+            cy.get('#resultado > :nth-child(1)').should('contain', 'Cadastrado!')
+        })
     
 })
