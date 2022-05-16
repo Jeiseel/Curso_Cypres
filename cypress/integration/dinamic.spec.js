@@ -8,7 +8,7 @@ describe('Testes dinamicos', () => {
     const foods = [' Carne', 'Frango', 'Pizza', 'Vegetariano']
 
     foods.forEach(food => {
-        it('Cadastrando comidas váriadas', () => {
+        it(`Cadastrando as comidas váriadas ${food}`, () => {
             cy.get('#formNome').type('Jeiseel')
             cy.get('#formSobrenome').type('Rodrigues')
             cy.get(`[name=formSexo][value=M]`).click()
